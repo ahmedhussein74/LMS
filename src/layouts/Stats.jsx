@@ -29,7 +29,7 @@ const Stats = () => {
   return (
     <section
       ref={ref}
-      className="min-h-[50vh] px-[5%] py-8 bg-[#1b0b3f] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-5"
+      className="min-h-[50vh] px-[5%] py-8 bg-[#1b0b3f] grid grid-cols-2 lg:grid-cols-4 justify-center items-center gap-5"
     >
       {stats.map((e, index) => (
         <div key={index} className="text-white text-center">
