@@ -1,11 +1,11 @@
-import Message from "../components/forms/Message";
+// import Message from "../components/forms/Message";
 
-const Contact = () => {
-  return (
-    <>
-      <Message />
-    </>
-  );
-};
+// const Contact = () => {
+//   return (
+//     <>
+//       <Message />
+//     </>
+//   );
+// };
 
-export default Contact;
+// export default Contact;

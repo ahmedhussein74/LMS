@@ -1,91 +1,65 @@
-import { useState } from "react";
-import {
-  Box,
-  Typography,
-  TextField,
-  MenuItem,
-  Button,
-  Select,
-  IconButton,
-  InputLabel,
-  OutlinedInput,
-  FormControl,
-  InputAdornment,
-} from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useEffect } from "react";
+import { toggleSignup } from "../../toolkit/signupSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Signup = () => {
-  const [level, setLevel] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-  const handleChange = (event) => {
-    setLevel(event.target.value);
-  };
+  const dispatch = useDispatch();
+  const signup = useSelector((state) => state.signup.active);
 
-  return (
-    <>
-      <Typography
-        component="h2"
-        sx={{
-          my: { xs: "24px", lg: "32px" },
-          textAlign: "center",
-          fontSize: { xs: "30px", md: "40px" },
-        }}
-      >
-        إنشاء حساب
-      </Typography>
-      <Box
-        component="form"
-        className="w-[90%] lg:w-1/2 xl:w-1/3 p-4 mx-auto flex flex-col gap-4 rounded-lg border shadow-lg"
-      >
-        <TextField id="username" label="الأسم" variant="outlined" />
-        <TextField id="email" label="البريد الإلكترونى" variant="outlined" />
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            كلمة المرور
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? "text" : "password"}
-            startAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="start"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="كلمة المرور"
-          />
-        </FormControl>
-        <TextField id="mobile" label="الهاتف" variant="outlined" />
-        <FormControl>
-          <InputLabel htmlFor="selectLevel">الصف الدراسى</InputLabel>
-          <Select
-            id="selectLevel"
-            name="selectLevel"
-            value={level}
-            label="الصف الدراسى"
-            onChange={handleChange}
-          >
-            <MenuItem value={1}>الصف الأول</MenuItem>
-            <MenuItem value={2}>الصف الثانى</MenuItem>
-            <MenuItem value={3}>الصف الثالث</MenuItem>
-          </Select>
-        </FormControl>
-        <Button variant="contained" color="success" size="large">
-          تأكيد
-        </Button>
-      </Box>
-    </>
-  );
+  useEffect(() => {
+    signup
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [signup]);
+
+  return signup ? (
+    <div className="w-full h-[100vh] bg-slate-900 bg-opacity-70 absolute top-0 flex items-center justify-center">
+      <form className="w-[90%] lg:w-1/2 xl:w-1/3 p-3 bg-[#fff] rounded-lg shadow-lg flex flex-col gap-6">
+        <div className="flex justify-between items-center text-2xl">
+          <p>إنشاء حساب</p>
+          <i
+            onClick={() => dispatch(toggleSignup())}
+            className="fa-solid fa-xmark cursor-pointer"
+          ></i>
+        </div>
+        <input
+          type="text"
+          placeholder="الإسم"
+          className="h-12 px-2 outline-none border rounded"
+        />
+        <input
+          type="text"
+          placeholder="رقم الهاتف"
+          className="h-12 px-2 outline-none border rounded"
+        />
+        <input
+          type="text"
+          placeholder="رقم ولى الأمر"
+          className="h-12 px-2 outline-none border rounded"
+        />
+        <input
+          type="text"
+          placeholder="البريد الإلكترونى"
+          className="h-12 px-2 outline-none border rounded"
+        />
+        <select className="h-12 px-2 outline-none border rounded">
+          <option value={1}>الصف الأول</option>
+          <option value={2}>الصف الثانى</option>
+          <option value={3}>الصف الثالث</option>
+        </select>
+        <input
+          type="password"
+          placeholder="كلمة المرور"
+          className="h-12 px-2 outline-none border rounded"
+        />
+        <input
+          type="button"
+          value="تأكيد"
+          className="h-12 bg-green-600 rounded text-white"
+        />
+      </form>
+    </div>
+  ) : null;
 };
 
 export default Signup;

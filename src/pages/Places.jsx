@@ -1,11 +1,11 @@
-import OurPlaces from "../layouts/OurPlaces";
+// import OurPlaces from "../layouts/OurPlaces";
 
-const Places = () => {
-  return (
-    <>
-      <OurPlaces />
-    </>
-  );
-};
+// const Places = () => {
+//   return (
+//     <>
+//       <OurPlaces />
+//     </>
+//   );
+// };
 
-export default Places;
+// export default Places;

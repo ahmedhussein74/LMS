@@ -1,69 +1,45 @@
-import { useState } from "react";
-import {
-  Box,
-  Typography,
-  TextField,
-  Button,
-  IconButton,
-  InputLabel,
-  OutlinedInput,
-  FormControl,
-  InputAdornment,
-} from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useEffect } from "react";
+import { toggleLogin } from "../../toolkit/loginSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const dispatch = useDispatch();
+  const login = useSelector((state) => state.login.active);
 
-  return (
-    <>
-      <Typography
-        component="h2"
-        sx={{
-          my: { xs: "24px", lg: "32px" },
-          textAlign: "center",
-          fontSize: { xs: "30px", md: "40px" },
-        }}
-      >
-        تسجيل الدخول
-      </Typography>
-      <Box
-        component="form"
-        className="w-[90%] lg:w-1/2 xl:w-1/3 p-4 mx-auto flex flex-col gap-4 rounded-lg border shadow-lg"
-      >
-        <TextField id="email" label="البريد الإلكترونى" variant="outlined" />
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            كلمة المرور
-          </InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? "text" : "password"}
-            startAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="start"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="كلمة المرور"
-          />
-        </FormControl>
-        <Button variant="contained" color="success" size="large">
-          تأكيد
-        </Button>
-      </Box>
-    </>
-  );
+  useEffect(() => {
+    login
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [login]);
+
+  return login ? (
+    <div className="w-full h-[100vh] bg-slate-900 bg-opacity-70 absolute top-0 flex items-center justify-center">
+      <form className="w-[90%] lg:w-1/2 xl:w-1/3 p-3 bg-[#fff] rounded-lg shadow-lg flex flex-col gap-6">
+        <div className="flex justify-between items-center text-2xl">
+          <p>تسجيل الدخول</p>
+          <i
+            onClick={() => dispatch(toggleLogin())}
+            className="fa-solid fa-xmark cursor-pointer"
+          ></i>
+        </div>
+        <input
+          type="text"
+          placeholder="البريد الإلكترونى"
+          className="h-12 px-2 outline-none border rounded"
+        />
+        <input
+          type="password"
+          placeholder="كلمة المرور"
+          className="h-12 px-2 outline-none border rounded"
+        />
+        <input
+          type="button"
+          value="دخول"
+          className="h-12 bg-blue-600 rounded text-white"
+        />
+      </form>
+    </div>
+  ) : null;
 };
 
 export default Login;
