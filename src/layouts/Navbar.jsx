@@ -10,6 +10,7 @@ const Navbar = () => {
     { url: "/", value: "الصفحة الرئيسية" },
     { url: "/lectures", value: "المحاضرات" },
     { url: "/revisions", value: "المراجعات" },
+    { url: "/exams", value: "الامتحانات" },
     { url: "/books", value: "الملازم" },
   ];
 
