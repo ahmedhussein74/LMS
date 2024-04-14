@@ -13,7 +13,7 @@ const Login = () => {
   }, [login]);
 
   return login ? (
-    <div className="w-full h-[100vh] bg-slate-900 bg-opacity-70 absolute top-0 flex items-center justify-center">
+    <div className="w-full h-[100vh] bg-slate-900 bg-opacity-70 fixed top-0 flex items-center justify-center">
       <form className="w-[90%] lg:w-1/2 xl:w-1/3 p-3 bg-[#fff] rounded-lg shadow-lg flex flex-col gap-6">
         <div className="flex justify-between items-center text-2xl">
           <p>تسجيل الدخول</p>
@@ -23,11 +23,14 @@ const Login = () => {
           ></i>
         </div>
         <input
+          id="email"
           type="text"
+          autoComplete="true"
           placeholder="البريد الإلكترونى"
           className="h-12 px-2 outline-none border rounded"
         />
         <input
+          id="password"
           type="password"
           placeholder="كلمة المرور"
           className="h-12 px-2 outline-none border rounded"
