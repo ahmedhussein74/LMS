@@ -35,11 +35,9 @@ const Login = () => {
           placeholder="كلمة المرور"
           className="h-12 px-2 outline-none border rounded"
         />
-        <input
-          type="button"
-          value="دخول"
-          className="h-12 bg-blue-600 rounded text-white"
-        />
+        <button className="h-12 bg-[#11baf0] rounded text-white hover:bg-transparent border-2 border-[#11baf0] hover:text-[#11baf0]">
+          دخول
+        </button>
       </form>
     </div>
   ) : null;

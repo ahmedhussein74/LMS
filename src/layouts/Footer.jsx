@@ -37,7 +37,7 @@ const Footer = () => {
       <p className="text-lg text-center pt-3">
         Copyright &copy; 2024 - Developed by{" "}
         <Link
-          className="text-sky-600"
+          className="text-[#11baf0]"
           to="https://www.linkedin.com/in/ahmedhussein22/"
         >
           Ahmed Hussein

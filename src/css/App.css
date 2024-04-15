@@ -2,6 +2,19 @@
   direction: rtl;
 }
 
+.p-paginator {
+  margin: 10px 0;
+}
+.p-paginator,
+.p-paginator-current {
+  direction: ltr;
+}
+
 .active {
   border-bottom: 2px #fff solid;
+}
+
+.p-accordion-header {
+  font-size: 20px;
+  background: #f9fafb;
 }
