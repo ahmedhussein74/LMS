@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1b0b3f] text-white px-[5%] py-8">
+    <footer className="bg-[#11baf0] text-white px-[5%] py-8">
       <div className="pb-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div>
           <div className="flex items-center gap-2 justify-center">
@@ -37,7 +37,7 @@ const Footer = () => {
       <p className="text-lg text-center pt-3">
         Copyright &copy; 2024 - Developed by{" "}
         <Link
-          className="text-[#11baf0]"
+          className="text-[#1b0b3f]"
           to="https://www.linkedin.com/in/ahmedhussein22/"
         >
           Ahmed Hussein

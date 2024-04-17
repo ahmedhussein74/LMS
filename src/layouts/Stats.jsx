@@ -38,7 +38,7 @@ const Stats = () => {
         >
           <div className="text-3xl lg:text-5xl">
             {inView ? (
-              <CountUp start={0} end={e.value} duration={5} />
+              <CountUp start={0} end={e.value} delay={1} duration={7} />
             ) : (
               <h2 className="text-3xl lg:text-5xl">0</h2>
             )}
